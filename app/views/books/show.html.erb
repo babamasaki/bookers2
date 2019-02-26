@@ -1,23 +1,22 @@
-<body>
+
 <%= render 'books/list', book_images: @book_images,user: @book.user, book: @bookn  %>
 
 			      	<div class="col-xs-9">
 			      	   <h2> Book detail</h2>
 			      	   <table class="table">
+			      	   	<tbody>
 			      		  <tr>
-			      			<td></td>
 			      			<td><%= @book.title %></td>
 			      			<td><%= @book.body %></td>
-
-			      			<% if @book.user.id == current_user.id %>
-
-				      			<td><%=link_to "edit", edit_book_path(@book), class: "btn-sm btn-success edit_#{@book.id}" %></td>
-				      			<td><%= link_to "Destroy", book_path(@book), class: "btn-sm btn-danger destroy_book_#{@book}", method: :delete, data: { confirm: '本当に消しますか？' } %></td>
-				      		  </tr>
+			      		  <% if @book.user.id == current_user.id %>
+				      		<td><%=link_to "edit", edit_book_path(@book), class: "btn-sm btn-success edit_book_#{@book.id}" %></td>
+				      		<td><%= link_to "Destroy", book_path(@book), class: "btn-sm btn-danger destroy_book_#{@book.id}", method: :delete, data: { confirm: '本当に消しますか？' } %></td>
+				      	  </tr>
 			      		  <% end %>
+						</tbody>
 			      	   </table>
 			      	</div>
 			</div>
 		</div>
 	</div>
-</body>
+
