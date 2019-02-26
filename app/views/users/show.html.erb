@@ -1,0 +1,32 @@
+<body>
+	<div class="body">
+		<!-- / -->
+		<%= render 'books/list', book_images: @book_images, user: @user, book: @book %>
+
+                <!-- / -->
+				<div class="col-xs-9">
+				<h2> Books</h2>
+				<table class="table">
+
+					<thead>
+				    	<tr>
+				    		<th></th>
+				    		<th> Title</th>
+				    		<th> Opinion</th>
+				    		<th colspan="3"></th>
+				    	</tr>
+				    </thead>
+					<% @books.each do |book| %>
+					<tbody>
+						<tr>
+							<td><%= attachment_image_tag book.user, :profile_image,　format: 'jpeg', fallback: "no_image.jpg", :size =>"50x50" %></td>
+							<td><%= link_to book.title, "/books/#{book.id}" %></td>
+							<td><%= book.body %></td>
+						</tr>
+					<% end %>
+				   </tbody>
+				</table>
+			</div>
+	</div>
+</body>
+
